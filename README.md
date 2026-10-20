@@ -1,22 +1,22 @@
 # CodeIgniter 3 Parser - Modular Refactoring
 
-Template Parser library untuk CodeIgniter 3 yang di-refactor menjadi modular dengan tetap mempertahankan API asli.
+A template parser library for CodeIgniter 3, refactored into a modular structure while keeping the original API intact.
 
-## Struktur
+## Structure
 
 ```
 Parser/
 ├── Parser.php                    # Main class (API CI3 compatible)
 ├── Contracts/
-│   ├── ParserInterface.php       # Interface utama parser
-│   ├── LexerInterface.php        # Interface tokenizer
-│   ├── CompilerInterface.php     # Interface compiler
-│   ├── CacheInterface.php        # Interface cache
-│   └── TokenInterface.php        # Interface token
+│   ├── ParserInterface.php       # Main parser interface
+│   ├── LexerInterface.php        # Tokenizer interface
+│   ├── CompilerInterface.php     # Compiler interface
+│   ├── CacheInterface.php        # Cache interface
+│   └── TokenInterface.php        # Token interface
 ├── Lexer/
-│   └── TemplateLexer.php         # Tokenizer template
+│   └── TemplateLexer.php         # Template tokenizer
 ├── Compiler/
-│   └── TemplateCompiler.php      # Interpreter pattern compiler
+│   └── TemplateCompiler.php      # Interpreter-pattern compiler
 ├── Context/
 │   └── ParseContext.php          # Context management
 ├── Factory/
@@ -26,7 +26,7 @@ Parser/
 ├── Support/
 │   └── TemplateHelper.php        # Utility functions
 ├── ValueObjects/
-│   └── Token.php                 # Immutable token VO
+│   └── Token.php                 # Immutable token value object
 ├── tests/
 │   └── ParserTest.php            # PHPUnit test suite
 ├── composer.json                 # PSR-4 autoloading
@@ -39,7 +39,7 @@ Parser/
 // Basic usage
 $parser = new \Kodhe\Framework\Parser\Parser();
 
-// Parse template dengan variable
+// Parse a template with variables
 $template = 'Hello, {name}!';
 $data = ['name' => 'World'];
 echo $parser->parse($template, $data);
@@ -54,16 +54,16 @@ $parser->set_delimiters('[', ']');
 ## Features
 
 ### Patterns
-- **Interpreter**: TemplateCompiler menginterpretasi tokens
-- **Strategy**: Lexer, Compiler, Cache dapat diganti
-- **Factory**: ParserFactory untuk membuat instance
-- **Builder**: Fluent interface di ParserFactory
-- **Dependency Injection**: Constructor injection di Parser
+- **Interpreter**: TemplateCompiler interprets tokens
+- **Strategy**: Lexer, Compiler and Cache are swappable
+- **Factory**: ParserFactory creates instances
+- **Builder**: Fluent interface on ParserFactory
+- **Dependency Injection**: Constructor injection in Parser
 
 ### Performance
-- **Cache Template Compile**: Hasil compile di-cache
-- **Lazy Compile**: Cache dicek sebelum compile
-- **Token Reuse**: Token dapat dibuat ulang dengan efisien
+- **Compiled template cache**: Compilation results are cached
+- **Lazy compile**: The cache is checked before compiling
+- **Token reuse**: Tokens can be recreated efficiently
 
 ### Testing
 - Variable substitution
@@ -189,7 +189,7 @@ $data = ['user' => ['name' => 'John', 'email' => 'john@example.com']];
 ## Requirements
 
 - PHP >= 7.2
-- PHPUnit >= 8.0 (untuk testing)
+- PHPUnit >= 8.0 (for testing)
 
 ## License
 
